@@ -1,10 +1,12 @@
+var params = {};
+
 $(function(){
 	check_state();	
 });
 
 function check_state(){
-	var params = {},
-		queryString = location.search.replace('?',''),
+	
+	var	queryString = location.search.replace('?',''),
 		regex = /([^&=]+)=([^&]*)/g, 
 		m;
 	while(m = regex.exec(queryString)){
