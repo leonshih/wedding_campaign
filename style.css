@@ -2,17 +2,46 @@ body{
 	background: black;
 }
 
-.standardPhoto{
+
+.main_area{
 	position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 200px;
+	width: 40%;
+    top: 10%;
+	left: 30%;
+}
+
+.standardPhoto{
+	width: 100%;
+	display: block;
+	margin: auto;
+}
+
+.profile{
+	position: absolute;
+	width: 100%;
+	top: 60%;
+	
+}
+
+.user_pic{
+	float: right;
+	width: 20%;
+	padding: 2%;
+	background: rgba(0, 0, 0, 0.9);
+}
+
+.username{
+	clear: both;
+	float: right;	
+	padding: 1%;
+	font-weight: bold;
+	color: white;
+	background: rgba(0, 0, 0, 0.9);
 }
 
 .bg-photo{
 	opacity: 0.2;
+	clip: circle(10% at center);
 }
 
 .bg-photo.active{
