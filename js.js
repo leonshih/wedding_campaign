@@ -16,8 +16,8 @@ $(function() {
 
     // Fetch results
     fetcher.fetch({
-        //user: '', // This is the ID for 9gag, you can get the ID from username using http://jelled.com/instagram/lookup-user-id
-        tag: 'puppy',
+        user: '37246735', // This is the ID for 9gag, you can get the ID from username using http://jelled.com/instagram/lookup-user-id
+        //tag: 'puppy',
         limit: 50,
         callback: onDataLoaded, // You can customize your own functionality by building from the logResults method
         params: 'yiyi & leon'
