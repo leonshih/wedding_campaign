@@ -3,8 +3,8 @@
 //other
 var access_token = "2274610174.1fb234f.5f6eb6bc393c4888a2e1a045490784d9",
 //var access_token = "16384709.6ac06b4.49b97800d7fd4ac799a2c889f50f2587",
-client_id = '04267db24e594d788cb8b54c4c3cc388', //mine
-//client_id = '81e3d3f35c8a4438964001decaa5a31f',
+//client_id = '04267db24e594d788cb8b54c4c3cc388', //mine
+client_id = '81e3d3f35c8a4438964001decaa5a31f',
 
     access_parameters = {
         access_token: access_token
