@@ -20,14 +20,13 @@ function callAPI(){
 
     // Fetch results
     fetcher.fetch({
-        user: '37246735', // This is the ID for 9gag, you can get the ID from username using http://jelled.com/instagram/lookup-user-id
-        //tag: 'gibson',
-        limit: 50,
+        //user: '37246735', // This is the ID for 9gag, you can get the ID from username using http://jelled.com/instagram/lookup-user-id
+        tag: 'ibanez',
+        limit: 100,
         callback: onDataLoaded, // You can customize your own functionality by building from the logResults method
         params: 'yiyi & leon'
     });
 }
-
 
 function grabImages(tag, count, access_parameters) {
     var instagramUrl = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?callback=?&count=' + count;
@@ -35,10 +34,11 @@ function grabImages(tag, count, access_parameters) {
 }
 
 var bgPhotos;
-var bgCount = 0;
+var bgCount;
 var bgMaxCount;
 var photoArr;
 var bgTimer;
+var intervalTime;  //重複幾次後callAPI, 避免送出給instagram API的次數大於上限5000次
 function onDataLoaded(instagram_data) {
     console.log(instagram_data);
     var target = $("#target");
@@ -55,6 +55,7 @@ function onDataLoaded(instagram_data) {
         target.html("nothing found");
     }
 	photoArr = photos;
+	bgCount = intervalTime = 0;
 	bgPhotos = $('.bg-photo');
 	bgMaxCount = bgPhotos.length;
 	bgTimer = setInterval(bgInterval, 3500);
@@ -62,26 +63,29 @@ function onDataLoaded(instagram_data) {
 
 var fadeTime = 800;
 function bgInterval(){
-	if(bgCount == bgMaxCount)
-	{
-		clearInterval(bgTimer);
-		callAPI();
-	}
-	else
-	{
-		$(bgPhotos[bgCount-1]).fadeTo(fadeTime, 0.2);
-		$(bgPhotos[bgCount]).fadeTo(fadeTime, 1);
-	}
-	$('.standardPhoto')[0].src = photoArr[bgCount].images.standard_resolution.url;
-	$('.user_pic')[0].src = photoArr[bgCount].user.profile_picture;
-	$('.username').html(photoArr[bgCount].user.username);
+	
+	$(bgPhotos[bgCount-1]).fadeTo(fadeTime, 0.2);
 	
 	$('.main_area').fadeTo(fadeTime, 0, function(){
 		$('.main_area').fadeTo(fadeTime, 1);
+		$(bgPhotos[bgCount]).fadeTo(fadeTime, 1);
+		$('.standardPhoto')[0].src = photoArr[bgCount].images.standard_resolution.url;
+		$('.user_pic')[0].src = photoArr[bgCount].user.profile_picture;
+		$('.username').html(photoArr[bgCount].user.username);
+		bgCount++;
+		if(bgCount == bgMaxCount)
+		{
+			intervalTime++;
+			console.log('interval time: ' + intervalTime);
+			if(intervalTime >= 20) //設定要輪播幾次後再去讀API
+			{
+				clearInterval(bgTimer);
+				callAPI();
+			}
+			else
+				bgCount = 0;
+		}
 	});
-	
-	bgCount++;
-	
 }
 
 

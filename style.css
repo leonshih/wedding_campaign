@@ -19,14 +19,14 @@ body{
 .profile{
 	position: absolute;
 	width: 100%;
-	top: 60%;
+	top: 65%;
 	
 }
 
 .user_pic{
 	float: right;
 	width: 20%;
-	padding: 2%;
+	padding: 2% 2% 0 2%;
 	background: rgba(0, 0, 0, 0.9);
 }
 
