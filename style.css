@@ -2,7 +2,32 @@ body{
 	background: black;
 }
 
+.lottery{
+	position: absolute;
+	right: 10%;
+	top: 10%;
+	color: white;
+	font-weight: bold;
+	font-size: 16;
+	
+}
 
+.winner_div{
+	position: absolute;
+	top: 75%;
+	width: 100%;
+}
+.winner_text{
+	display: none;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.7);
+	font-size: 40px;
+	font-weight: bold;
+	color: white;
+}
+.winner_text.active{
+	display: block;
+}
 .main_area{
 	position: absolute;
 	width: 40%;
